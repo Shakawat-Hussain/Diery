@@ -20,6 +20,7 @@ namespace Diery.Access
         public string Pictures { get; set; }
         public string Description { get; set; }
         public string Username { get; set; }
+        public string MobileNo { get; set; }
 
 
         public List<Event> Evnts(string sql)

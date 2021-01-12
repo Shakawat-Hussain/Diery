@@ -31,10 +31,12 @@ namespace Diery
             if (checkBox1.Checked)
             {
                 Inf = "MobileNo";
+                Assgn();
             }
             else
             {
                 Inf = "Username";
+                Un = textBox1.Text;
             }
             a.Connection();
             SqlDataReader reader = this.a.Reader("Select * from Userdata where "+Inf+"='" + textBox1.Text + "'and Password='" + textBox2.Text + "'");
@@ -48,7 +50,10 @@ namespace Diery
                 }
                 else
                 {
-                Un = textBox1.Text;
+
+           
+                
+               
                 MessageBox.Show("Login successful");
                 reader.Close();
                 a.ConClose();
@@ -58,6 +63,20 @@ namespace Diery
             }
             
            
+        }
+        public void Assgn()
+        {
+           
+            a.Connection();
+            SqlDataReader reader = this.a.Reader("Select Username from Userdata where MobileNo ='" + textBox1.Text + "'");
+            while (reader.Read())
+            {
+               
+                Un = reader["Username"].ToString();
+            }
+            
+            reader.Close();
+            a.ConClose();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
