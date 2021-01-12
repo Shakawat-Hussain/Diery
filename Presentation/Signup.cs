@@ -30,7 +30,7 @@ namespace Diery.Presentation
        public void AddUser()
         {
            // a.Connection();
-            a.Execute("Insert into Userdata (Username,Password) Values('"+textBox1.Text+"','"+textBox2.Text+"')");
+            a.Execute("Insert into Userdata (Username,Password,MobileNo) Values('"+textBox1.Text+"','"+textBox2.Text+"','"+textBox3.Text+"')");
             
            // a.ConClose();
         }

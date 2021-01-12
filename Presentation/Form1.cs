@@ -28,42 +28,41 @@ namespace Diery
         {
 
             string Inf;
-            if (checkBox1.Checked)
-            {
-                Inf = "MobileNo";
-                Assgn();
-            }
-            else
-            {
-                Inf = "Username";
-                Un = textBox1.Text;
-            }
-            a.Connection();
-            SqlDataReader reader = this.a.Reader("Select * from Userdata where "+Inf+"='" + textBox1.Text + "'and Password='" + textBox2.Text + "'");
-            
+                if (checkBox1.Checked)
+                {
+                    Inf = "MobileNo";
+                    Assgn();
+                }
+                else
+                {
+                    Inf = "Username";
+                    Un = textBox1.Text;
+                }
+                a.Connection();
+                SqlDataReader reader = this.a.Reader("Select * from Userdata where " + Inf + "='" + textBox1.Text + "'and Password='" + textBox2.Text + "'");
+
                 if (!reader.HasRows)
                 {
-                    
-                MessageBox.Show("Incorrect details");
-                a.ConClose();
+
+                    MessageBox.Show("Incorrect details");
+                    a.ConClose();
 
                 }
                 else
                 {
 
-           
-                
-               
-                MessageBox.Show("Login successful");
-                reader.Close();
-                a.ConClose();
-                Home h = new Home();
-                h.Show();
-                this.Hide();
-            }
+                    MessageBox.Show("Login successful");
+                    reader.Close();
+                    a.ConClose();
+                    Home h = new Home();
+                    h.Show();
+                    this.Hide();
+                }
+
+
             
            
-        }
+            }
         public void Assgn()
         {
            
