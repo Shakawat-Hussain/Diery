@@ -26,8 +26,18 @@ namespace Diery
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            string Inf;
+            if (checkBox1.Checked)
+            {
+                Inf = "MobileNo";
+            }
+            else
+            {
+                Inf = "Username";
+            }
             a.Connection();
-            SqlDataReader reader = this.a.Reader("Select * from Userdata where Username='" + textBox1.Text + "'and Password='" + textBox2.Text + "'");
+            SqlDataReader reader = this.a.Reader("Select * from Userdata where "+Inf+"='" + textBox1.Text + "'and Password='" + textBox2.Text + "'");
             
                 if (!reader.HasRows)
                 {
@@ -60,6 +70,11 @@ namespace Diery
             Signup s = new Signup();
             s.Show();
             this.Hide();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            MessageBox.Show("If you want to Login with MobileNo you might check the box");
         }
     }
 }
