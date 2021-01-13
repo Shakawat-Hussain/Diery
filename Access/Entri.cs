@@ -16,7 +16,7 @@ namespace Diery.Access
         public Entri()
         {
             this.a = new SqlConnection(ConfigurationManager.ConnectionStrings["Dayeri"].ConnectionString);
-            //a.Open();
+           
         }
         public void Connection()
         {

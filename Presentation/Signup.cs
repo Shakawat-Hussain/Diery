@@ -37,7 +37,7 @@ namespace Diery.Presentation
         private void button1_Click(object sender, EventArgs e)
         {
             a.Connection();
-            // a.Execute("Insert into Events (Name,Date,Pictures,Description,Username) Values('"+textBox1.Text+"','"+dateTimePicker1.Text+"','"+textBox2.Text+"','"+textBox3.Text+"','"+Form1.Un+"')");
+
             SqlDataReader reader = this.a.Reader("Select * from Userdata where Username='"+textBox1.Text+"'");
             if (!reader.HasRows)
             {
@@ -58,7 +58,7 @@ namespace Diery.Presentation
                 reader.Close();
                 a.ConClose();
             }
-            //reader.Close();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)

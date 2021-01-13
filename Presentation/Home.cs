@@ -29,11 +29,7 @@ namespace Diery.Presentation
             string Person = Form1.Un;
             dataGridView1.DataSource = et.Alllist("Select * from Events where Username='" + Person + "'");
             listBox1.DataSource = et.EventNames();
-            foreach (DriveInfo drv in DriveInfo.GetDrives())
-                listBox2.Items.Add(drv);
-               
-            
-           
+      
             a.ConClose();
 
         }
@@ -81,43 +77,14 @@ namespace Diery.Presentation
             a.ConClose();
         }
 
-        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            listBox3.Items.Clear();
-            
-            try 
-            {
-                DriveInfo deive = (DriveInfo)listBox2.SelectedItem;
-                
-                foreach (DirectoryInfo drinfo in deive.RootDirectory.GetDirectories())
-                
-                    listBox3.Items.Add(drinfo);
-                
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+       
 
-        private void listBox4_SelectedIndexChanged(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-
+            Form1 f = new Form1();
+            f.Show();
+            this.Hide();
         }
-        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-                listBox4.Items.Clear();
-                try
-                {
-                    DirectoryInfo drin = (DirectoryInfo)listBox3.SelectedItem;
-                    foreach (FileInfo fl in drin.GetFiles())
-                        listBox4.Items.Add(fl);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
+    }
     }
 

@@ -33,14 +33,15 @@ namespace Diery.Presentation
             this.button1 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.AllDrives = new System.Windows.Forms.ListBox();
+            this.Folders = new System.Windows.Forms.ListBox();
+            this.Files = new System.Windows.Forms.ListBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,10 +50,8 @@ namespace Diery.Presentation
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.textBox3);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(112, 76);
@@ -86,13 +85,6 @@ namespace Diery.Presentation
             this.dateTimePicker1.Size = new System.Drawing.Size(187, 20);
             this.dateTimePicker1.TabIndex = 6;
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(132, 109);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 5;
-            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(132, 31);
@@ -108,15 +100,6 @@ namespace Diery.Presentation
             this.label4.Size = new System.Drawing.Size(60, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "Description";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 116);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Pictures";
             // 
             // label2
             // 
@@ -146,23 +129,62 @@ namespace Diery.Presentation
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // openFileDialog1
+            // AllDrives
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.AllDrives.FormattingEnabled = true;
+            this.AllDrives.Location = new System.Drawing.Point(471, 76);
+            this.AllDrives.Name = "AllDrives";
+            this.AllDrives.Size = new System.Drawing.Size(48, 238);
+            this.AllDrives.TabIndex = 2;
+            this.AllDrives.SelectedIndexChanged += new System.EventHandler(this.AllDrives_SelectedIndexChanged);
+            // 
+            // Folders
+            // 
+            this.Folders.FormattingEnabled = true;
+            this.Folders.Location = new System.Drawing.Point(539, 76);
+            this.Folders.Name = "Folders";
+            this.Folders.Size = new System.Drawing.Size(97, 238);
+            this.Folders.TabIndex = 3;
+            this.Folders.SelectedIndexChanged += new System.EventHandler(this.Folders_SelectedIndexChanged);
+            // 
+            // Files
+            // 
+            this.Files.FormattingEnabled = true;
+            this.Files.Location = new System.Drawing.Point(656, 76);
+            this.Files.Name = "Files";
+            this.Files.Size = new System.Drawing.Size(119, 238);
+            this.Files.TabIndex = 4;
+            this.Files.SelectedIndexChanged += new System.EventHandler(this.Files_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(539, 40);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(112, 16);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Select Pictures";
             // 
             // AddEvents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.Files);
+            this.Controls.Add(this.Folders);
+            this.Controls.Add(this.AllDrives);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox1);
             this.Name = "AddEvents";
             this.Text = "AddEvents";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddEvents_FormClosing);
+            this.Load += new System.EventHandler(this.AddEvents_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -172,13 +194,14 @@ namespace Diery.Presentation
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ListBox AllDrives;
+        private System.Windows.Forms.ListBox Folders;
+        private System.Windows.Forms.ListBox Files;
+        private System.Windows.Forms.Label label3;
     }
 }
